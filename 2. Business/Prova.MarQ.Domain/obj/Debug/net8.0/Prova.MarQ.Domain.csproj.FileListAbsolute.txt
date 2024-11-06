@@ -1,0 +1,12 @@
+C:\Projects\prova-marq-backend-main\Prova.MarQ\2. Business\Prova.MarQ.Domain\bin\Debug\net8.0\Prova.MarQ.Domain.deps.json
+C:\Projects\prova-marq-backend-main\Prova.MarQ\2. Business\Prova.MarQ.Domain\bin\Debug\net8.0\Prova.MarQ.Domain.dll
+C:\Projects\prova-marq-backend-main\Prova.MarQ\2. Business\Prova.MarQ.Domain\bin\Debug\net8.0\Prova.MarQ.Domain.pdb
+C:\Projects\prova-marq-backend-main\Prova.MarQ\2. Business\Prova.MarQ.Domain\obj\Debug\net8.0\Prova.MarQ.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\prova-marq-backend-main\Prova.MarQ\2. Business\Prova.MarQ.Domain\obj\Debug\net8.0\Prova.MarQ.Domain.AssemblyInfoInputs.cache
+C:\Projects\prova-marq-backend-main\Prova.MarQ\2. Business\Prova.MarQ.Domain\obj\Debug\net8.0\Prova.MarQ.Domain.AssemblyInfo.cs
+C:\Projects\prova-marq-backend-main\Prova.MarQ\2. Business\Prova.MarQ.Domain\obj\Debug\net8.0\Prova.MarQ.Domain.csproj.CoreCompileInputs.cache
+C:\Projects\prova-marq-backend-main\Prova.MarQ\2. Business\Prova.MarQ.Domain\obj\Debug\net8.0\Prova.MarQ.Domain.sourcelink.json
+C:\Projects\prova-marq-backend-main\Prova.MarQ\2. Business\Prova.MarQ.Domain\obj\Debug\net8.0\Prova.MarQ.Domain.dll
+C:\Projects\prova-marq-backend-main\Prova.MarQ\2. Business\Prova.MarQ.Domain\obj\Debug\net8.0\refint\Prova.MarQ.Domain.dll
+C:\Projects\prova-marq-backend-main\Prova.MarQ\2. Business\Prova.MarQ.Domain\obj\Debug\net8.0\Prova.MarQ.Domain.pdb
+C:\Projects\prova-marq-backend-main\Prova.MarQ\2. Business\Prova.MarQ.Domain\obj\Debug\net8.0\ref\Prova.MarQ.Domain.dll
