@@ -1,4 +1,6 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Prova.MarQ.API.DTOs;
 using Prova.MarQ.Domain.Entities;
 using Prova.MarQ.Domain.Services.Interfaces;
 
@@ -9,10 +11,12 @@ namespace Prova.MarQ.Presentation.Controllers
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployeeService _employeeService;
+        private readonly IMapper _mapper;
 
-        public EmployeeController(IEmployeeService employeeService)
+        public EmployeeController(IEmployeeService employeeService, IMapper mapper)
         {
             _employeeService = employeeService;
+            _mapper = mapper;
         }
 
         [HttpGet("{id}")]
@@ -25,10 +29,11 @@ namespace Prova.MarQ.Presentation.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddAsync(Employee employee)
+        public async Task<ActionResult> AddAsync(EmployeeDTO employeeDTO)
         {
+            var employee = _mapper.Map<Employee>(employeeDTO);
             await _employeeService.AddAsync(employee);
-            return CreatedAtAction(nameof(GetByIdAsync), new { id = employee.Id }, employee);
+            return Ok("Salvo com sucesso");
         }
 
         [HttpPut("{id}")]
