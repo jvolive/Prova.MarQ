@@ -10,20 +10,6 @@ public class TimeRecordRepository : RepositoryBase<TimeRecord>, ITimeRecordRepos
     {
     }
 
-    public async Task DeleteByEmployeeRegistrationAsync(int employeeRegistration)
-    {
-        var timeRecords = await _context.TimeRecords
-            .Where(tr => tr.EmployeeRegistration == employeeRegistration && !tr.IsDeleted)
-            .ToListAsync();
-
-        foreach (var timeRecord in timeRecords)
-        {
-            timeRecord.IsDeleted = true;
-        }
-
-        await _context.SaveChangesAsync();
-    }
-
     public async Task<IEnumerable<TimeRecord>> GetByDateRangeAsync(DateTime startDate, DateTime endDate)
     {
         return await _context.TimeRecords
@@ -35,5 +21,20 @@ public class TimeRecordRepository : RepositoryBase<TimeRecord>, ITimeRecordRepos
     {
         return await _context.TimeRecords
             .FirstOrDefaultAsync(tr => tr.EmployeeRegistration == employeeRegistration && tr.Date.Date == date.Date && !tr.IsDeleted);
+    }
+
+    public async Task DeleteByEmployeeRegistrationAsync(int employeeRegistration)
+    {
+        var timeRecords = await _context.TimeRecords
+            .Where(tr => tr.EmployeeRegistration == employeeRegistration && !tr.IsDeleted)
+            .ToListAsync();
+
+        foreach (var record in timeRecords)
+        {
+            record.IsDeleted = true;
+            _context.TimeRecords.Update(record);
+        }
+
+        await _context.SaveChangesAsync();
     }
 }
