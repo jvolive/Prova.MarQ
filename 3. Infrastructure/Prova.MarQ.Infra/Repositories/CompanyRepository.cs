@@ -40,9 +40,9 @@ public class CompanyRepository : ICompanyRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task DeleteAsync(string name)
+    public async Task DeleteAsync(Guid id)
     {
-        var company = await _context.Companies.FirstOrDefaultAsync(c => c.Name == name && !c.IsDeleted);
+        var company = await _context.Companies.FirstOrDefaultAsync(c => c.Id == id && !c.IsDeleted);
 
         if (company == null)
         {
@@ -77,4 +77,11 @@ public class CompanyRepository : ICompanyRepository
         return await _context.Companies
             .FirstOrDefaultAsync(c => c.Id == id && !c.IsDeleted);
     }
+
+    public async Task<Company> GetByNameAsync(string name)
+    {
+        return await _context.Companies
+            .FirstOrDefaultAsync(e => e.Name == name && !e.IsDeleted);
+    }
+
 }

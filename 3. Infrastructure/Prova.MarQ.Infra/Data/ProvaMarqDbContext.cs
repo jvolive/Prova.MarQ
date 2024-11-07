@@ -11,5 +11,6 @@ namespace Prova.MarQ.Infra
 
         public DbSet<Company> Companies { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<TimeRecord> TimeRecords { get; set; }
     }
 }

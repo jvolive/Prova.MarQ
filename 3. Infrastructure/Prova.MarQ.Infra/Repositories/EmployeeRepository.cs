@@ -1,5 +1,3 @@
-using System.Security.Cryptography;
-using System.Text;
 using Prova.MarQ.Domain.Entities;
 using Prova.MarQ.Infra.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +18,7 @@ public class EmployeeRepository : IEmployeeRepository
     {
         if (await ExistsByDocumentAsync(entity.Document))
         {
-            throw new InvalidOperationException("Employee com este documento já existe.");
+            throw new InvalidOperationException("Funcionário com este documento já existe.");
         }
 
         if (!string.IsNullOrWhiteSpace(entity.Pin))
@@ -30,9 +28,10 @@ public class EmployeeRepository : IEmployeeRepository
         }
         else
         {
-            throw new InvalidOperationException("O PIN é obrigatório para o cadastro do Employee.");
+            throw new InvalidOperationException("O PIN é obrigatório para o cadastro do Funcionário.");
         }
 
+        entity.CreatedAt = DateTimeOffset.UtcNow;
         await _context.Employees.AddAsync(entity);
         await _context.SaveChangesAsync();
     }
@@ -43,7 +42,7 @@ public class EmployeeRepository : IEmployeeRepository
             .FirstOrDefaultAsync(e => e.Id == entity.Id && !e.IsDeleted);
         if (existingEmployee == null)
         {
-            throw new KeyNotFoundException("Employee não encontrado.");
+            throw new KeyNotFoundException("Funcionário não encontrado.");
         }
 
         existingEmployee.Name = entity.Name;
@@ -54,13 +53,13 @@ public class EmployeeRepository : IEmployeeRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task DeleteAsync(string name)
+    public async Task DeleteAsync(Guid id)
     {
         var employee = await _context.Employees
-            .FirstOrDefaultAsync(e => e.Name == name && !e.IsDeleted);
+            .FirstOrDefaultAsync(e => e.Id == id && !e.IsDeleted);
         if (employee == null)
         {
-            throw new KeyNotFoundException("Employee não encontrado.");
+            throw new KeyNotFoundException("Funcionário não encontrado.");
         }
 
         employee.IsDeleted = true;
