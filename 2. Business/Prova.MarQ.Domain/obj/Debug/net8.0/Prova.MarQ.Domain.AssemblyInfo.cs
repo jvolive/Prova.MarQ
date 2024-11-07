@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Prova.MarQ.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4210a354b184b8f76b126eec0d5ac8573a82eec1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+624c2dd917eb970079b7a802500c6bc02c0df140")]
 [assembly: System.Reflection.AssemblyProductAttribute("Prova.MarQ.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Prova.MarQ.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
