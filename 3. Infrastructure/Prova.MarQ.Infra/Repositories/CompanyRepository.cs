@@ -13,6 +13,14 @@ public class CompanyRepository : ICompanyRepository
         _context = context;
     }
 
+    public async Task<IEnumerable<Company>> GetAllAsync()
+    {
+        return await _context.Companies
+            .Include(c => c.Employees)
+            .Where(c => !c.IsDeleted)
+            .ToListAsync();
+    }
+
     public async Task AddAsync(Company entity)
     {
         if (await ExistsByDocumentAsync(entity.Document))
@@ -42,7 +50,8 @@ public class CompanyRepository : ICompanyRepository
 
     public async Task DeleteAsync(Guid id)
     {
-        var company = await _context.Companies.FirstOrDefaultAsync(c => c.Id == id && !c.IsDeleted);
+        var company = await _context.Companies
+            .FirstOrDefaultAsync(c => c.Id == id && !c.IsDeleted);
 
         if (company == null)
         {
@@ -54,34 +63,22 @@ public class CompanyRepository : ICompanyRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task<bool> ExistsByDocumentAsync(string document)
-    {
-        return await _context.Companies.AnyAsync(c => c.Document == document && !c.IsDeleted);
-    }
-
-    public async Task<IEnumerable<Company>> GetAllAsync()
+    public async Task<Company> GetByNameAsync(string name)
     {
         return await _context.Companies
-            .Where(c => !c.IsDeleted)
-            .ToListAsync();
+            .Include(c => c.Employees)
+            .FirstOrDefaultAsync(e => e.Name == name && !e.IsDeleted);
     }
 
     public async Task<Company> GetByDocumentAsync(string document)
     {
         return await _context.Companies
+            .Include(c => c.Employees)
             .FirstOrDefaultAsync(c => c.Document == document && !c.IsDeleted);
     }
 
-    public async Task<Company> GetByIdAsync(Guid id)
+    public async Task<bool> ExistsByDocumentAsync(string document)
     {
-        return await _context.Companies
-            .FirstOrDefaultAsync(c => c.Id == id && !c.IsDeleted);
+        return await _context.Companies.AnyAsync(c => c.Document == document && !c.IsDeleted);
     }
-
-    public async Task<Company> GetByNameAsync(string name)
-    {
-        return await _context.Companies
-            .FirstOrDefaultAsync(e => e.Name == name && !e.IsDeleted);
-    }
-
 }

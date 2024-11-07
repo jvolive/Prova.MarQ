@@ -9,7 +9,11 @@ public class Employee : Base
     [MaxLength(100)]
     public string Name { get; set; }
     [Required]
+    [MaxLength(11)]
     public string Document { get; set; }
+    [Required]
+    [MaxLength(6)]
+    public int Registration { get; set; }
     [Required]
     [MaxLength(4)]
     [NotMapped]

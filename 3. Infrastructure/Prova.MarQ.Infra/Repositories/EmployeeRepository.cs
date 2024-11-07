@@ -14,6 +14,13 @@ public class EmployeeRepository : IEmployeeRepository
         _context = context;
     }
 
+    public async Task<IEnumerable<Employee>> GetAllAsync()
+    {
+        return await _context.Employees
+            .Where(e => !e.IsDeleted)
+            .ToListAsync();
+    }
+
     public async Task AddAsync(Employee entity)
     {
         if (await ExistsByDocumentAsync(entity.Document))
@@ -67,19 +74,6 @@ public class EmployeeRepository : IEmployeeRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task<IEnumerable<Employee>> GetAllAsync()
-    {
-        return await _context.Employees
-            .Where(e => !e.IsDeleted)
-            .ToListAsync();
-    }
-
-    public async Task<Employee> GetByIdAsync(Guid id)
-    {
-        return await _context.Employees
-            .FirstOrDefaultAsync(e => e.Id == id && !e.IsDeleted);
-    }
-
     public async Task<Employee> GetByNameAsync(string name)
     {
         return await _context.Employees
@@ -92,6 +86,11 @@ public class EmployeeRepository : IEmployeeRepository
             .FirstOrDefaultAsync(e => e.Document == document && !e.IsDeleted);
     }
 
+    public async Task<Employee> GetByRegistrationAsync(int registration)
+    {
+        return await _context.Employees
+            .FirstOrDefaultAsync(e => e.Registration == registration && !e.IsDeleted);
+    }
 
     public async Task<bool> ExistsByDocumentAsync(string document)
     {
