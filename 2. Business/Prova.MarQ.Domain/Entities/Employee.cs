@@ -12,7 +12,7 @@ public class Employee : Base
     [MaxLength(11)]
     public string Document { get; set; }
     [Required]
-    [MaxLength(6)]
+    [Range(1, 999)]
     public int Registration { get; set; }
     [Required]
     [MaxLength(4)]
@@ -21,4 +21,7 @@ public class Employee : Base
     public string PinHash { get; set; }
     public string PinSalt { get; set; }
     public bool IsDeleted { get; set; } = false;
+    public Guid CompanyId { get; set; }
+    public Company Company { get; set; }
+    public ICollection<TimeRecord> TimeRecords { get; set; }
 }

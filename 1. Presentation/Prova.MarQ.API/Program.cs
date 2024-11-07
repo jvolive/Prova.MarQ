@@ -25,6 +25,8 @@ builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
 builder.Services.AddScoped<ITimeRecordRepository, TimeRecordRepository>();
 
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+builder.Services.AddScoped<ICompanyService, CompanyService>();
+builder.Services.AddScoped<ITimeRecordService, TimeRecordService>();
 builder.Services.AddScoped<IPinHelper, PinHelper>();
 builder.Services.AddScoped<IRegistrationHelper, RegistrationHelper>();
 

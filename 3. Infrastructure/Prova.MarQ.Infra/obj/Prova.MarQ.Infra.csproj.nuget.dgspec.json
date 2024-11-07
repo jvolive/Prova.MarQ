@@ -4,14 +4,14 @@
     "C:\\Projects\\prova-marq-backend-main\\Prova.MarQ\\3. Infrastructure\\Prova.MarQ.Infra\\Prova.MarQ.Infra.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\prova-marq-backend-main\\Prova.MarQ\\2. Business\\Prova.MarQ.Domain\\Prova.MarQ.Domain.csproj": {
+    "c:\\Projects\\prova-marq-backend-main\\Prova.MarQ\\2. Business\\Prova.MarQ.Domain\\Prova.MarQ.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\prova-marq-backend-main\\Prova.MarQ\\2. Business\\Prova.MarQ.Domain\\Prova.MarQ.Domain.csproj",
+        "projectUniqueName": "c:\\Projects\\prova-marq-backend-main\\Prova.MarQ\\2. Business\\Prova.MarQ.Domain\\Prova.MarQ.Domain.csproj",
         "projectName": "Prova.MarQ.Domain",
-        "projectPath": "C:\\Projects\\prova-marq-backend-main\\Prova.MarQ\\2. Business\\Prova.MarQ.Domain\\Prova.MarQ.Domain.csproj",
+        "projectPath": "c:\\Projects\\prova-marq-backend-main\\Prova.MarQ\\2. Business\\Prova.MarQ.Domain\\Prova.MarQ.Domain.csproj",
         "packagesPath": "C:\\Users\\joaoo\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\prova-marq-backend-main\\Prova.MarQ\\2. Business\\Prova.MarQ.Domain\\obj\\",
+        "outputPath": "c:\\Projects\\prova-marq-backend-main\\Prova.MarQ\\2. Business\\Prova.MarQ.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\joaoo\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -86,8 +86,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Projects\\prova-marq-backend-main\\Prova.MarQ\\2. Business\\Prova.MarQ.Domain\\Prova.MarQ.Domain.csproj": {
-                "projectPath": "C:\\Projects\\prova-marq-backend-main\\Prova.MarQ\\2. Business\\Prova.MarQ.Domain\\Prova.MarQ.Domain.csproj"
+              "c:\\Projects\\prova-marq-backend-main\\Prova.MarQ\\2. Business\\Prova.MarQ.Domain\\Prova.MarQ.Domain.csproj": {
+                "projectPath": "c:\\Projects\\prova-marq-backend-main\\Prova.MarQ\\2. Business\\Prova.MarQ.Domain\\Prova.MarQ.Domain.csproj"
               }
             }
           }
