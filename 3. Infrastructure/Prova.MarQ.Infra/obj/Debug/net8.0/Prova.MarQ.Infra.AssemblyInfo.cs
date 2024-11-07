@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Prova.MarQ.Infra")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4ca328d7614ed2fcb3c6e89c8975a95caa89b6fa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b9fe23166dde85a7ac98a5f48fd577aefb931a8f")]
 [assembly: System.Reflection.AssemblyProductAttribute("Prova.MarQ.Infra")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Prova.MarQ.Infra")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

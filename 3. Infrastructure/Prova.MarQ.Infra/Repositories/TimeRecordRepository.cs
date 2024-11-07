@@ -1,48 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using Prova.MarQ.Domain.Entities;
-using Prova.MarQ.Infra.Repositories.Interfaces;
+using Prova.MarQ.Domain.Repositories.Interfaces;
 
 namespace Prova.MarQ.Infra.Repositories;
 
-public class TimeRecordRepository : ITimeRecordRepository
+public class TimeRecordRepository : RepositoryBase<TimeRecord>, ITimeRecordRepository
 {
-    private readonly MarqDbContext _context;
-
-    public TimeRecordRepository(MarqDbContext context)
+    public TimeRecordRepository(MarqDbContext context) : base(context)
     {
-        _context = context;
-    }
-
-    public async Task<IEnumerable<TimeRecord>> GetAllAsync()
-    {
-        return await _context.TimeRecords
-            .Where(c => !c.IsDeleted)
-            .ToListAsync();
-    }
-
-    public async Task AddAsync(TimeRecord timeRecord)
-    {
-        await _context.TimeRecords.AddAsync(timeRecord);
-        await _context.SaveChangesAsync();
-    }
-
-    public async Task UpdateAsync(TimeRecord timeRecord)
-    {
-        _context.TimeRecords.Update(timeRecord);
-        await _context.SaveChangesAsync();
-    }
-
-    public async Task DeleteAsync(Guid id)
-    {
-        var timeRecord = await _context.TimeRecords
-            .FirstOrDefaultAsync(tr => tr.Id == id);
-
-        if (timeRecord != null)
-        {
-            timeRecord.IsDeleted = true;
-            _context.TimeRecords.Update(timeRecord);
-            await _context.SaveChangesAsync();
-        }
     }
 
     public async Task DeleteByEmployeeRegistrationAsync(int employeeRegistration)
@@ -54,7 +19,6 @@ public class TimeRecordRepository : ITimeRecordRepository
         foreach (var timeRecord in timeRecords)
         {
             timeRecord.IsDeleted = true;
-            _context.TimeRecords.Update(timeRecord);
         }
 
         await _context.SaveChangesAsync();

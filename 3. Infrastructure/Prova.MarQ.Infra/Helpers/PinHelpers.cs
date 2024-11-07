@@ -1,10 +1,11 @@
 using System.Security.Cryptography;
 using System.Text;
+using Prova.MarQ.Domain.Interfaces.Helpers;
 
 namespace Prova.MarQ.Infra.Helpers;
-public static class PinHelper
+public class PinHelper : IPinHelper
 {
-    public static (string hash, string salt) HashPin(string pin)
+    public (string hash, string salt) HashPin(string pin)
     {
         using var hmac = new HMACSHA256();
         var salt = Convert.ToBase64String(hmac.Key);
@@ -12,11 +13,10 @@ public static class PinHelper
         return (hash, salt);
     }
 
-    public static bool VerifyPin(string storedHash, string storedSalt, string pin)
+    public bool VerifyPin(string storedHash, string storedSalt, string pin)
     {
         using var hmac = new HMACSHA256(Convert.FromBase64String(storedSalt));
         var computedHash = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(pin)));
         return computedHash == storedHash;
     }
 }
-
