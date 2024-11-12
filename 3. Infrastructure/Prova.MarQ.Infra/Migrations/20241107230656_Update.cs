@@ -5,7 +5,7 @@
 namespace Prova.MarQ.Infra.Migrations
 {
     /// <inheritdoc />
-    public partial class Tests : Migration
+    public partial class Update : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

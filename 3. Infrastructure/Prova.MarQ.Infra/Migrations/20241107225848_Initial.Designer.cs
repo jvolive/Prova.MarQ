@@ -11,8 +11,8 @@ using Prova.MarQ.Infra;
 namespace Prova.MarQ.Infra.Migrations
 {
     [DbContext(typeof(MarqDbContext))]
-    [Migration("20241107130620_AddRegistrationEmployee")]
-    partial class AddRegistrationEmployee
+    [Migration("20241107225848_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,7 +56,7 @@ namespace Prova.MarQ.Infra.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("CompanyId")
+                    b.Property<Guid>("CompanyId")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTimeOffset>("CreatedAt")
@@ -75,6 +75,11 @@ namespace Prova.MarQ.Infra.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Pin")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("PinHash")
                         .HasColumnType("TEXT");
 
@@ -82,7 +87,6 @@ namespace Prova.MarQ.Infra.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Registration")
-                        .HasMaxLength(6)
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTimeOffset?>("UpdatedAt")
@@ -105,6 +109,9 @@ namespace Prova.MarQ.Infra.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Date")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("EmployeeId")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("EmployeeRegistration")
@@ -136,19 +143,41 @@ namespace Prova.MarQ.Infra.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EmployeeId");
+
                     b.ToTable("TimeRecords");
                 });
 
             modelBuilder.Entity("Prova.MarQ.Domain.Entities.Employee", b =>
                 {
-                    b.HasOne("Prova.MarQ.Domain.Entities.Company", null)
+                    b.HasOne("Prova.MarQ.Domain.Entities.Company", "Company")
                         .WithMany("Employees")
-                        .HasForeignKey("CompanyId");
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Company");
+                });
+
+            modelBuilder.Entity("Prova.MarQ.Domain.Entities.TimeRecord", b =>
+                {
+                    b.HasOne("Prova.MarQ.Domain.Entities.Employee", "Employee")
+                        .WithMany("TimeRecords")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
                 });
 
             modelBuilder.Entity("Prova.MarQ.Domain.Entities.Company", b =>
                 {
                     b.Navigation("Employees");
+                });
+
+            modelBuilder.Entity("Prova.MarQ.Domain.Entities.Employee", b =>
+                {
+                    b.Navigation("TimeRecords");
                 });
 #pragma warning restore 612, 618
         }

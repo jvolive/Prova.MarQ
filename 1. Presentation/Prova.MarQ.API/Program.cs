@@ -11,7 +11,7 @@ using Prova.MarQ.Infra.Repositories;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<MarqDbContext>(options =>
-    options.UseSqlite("Data Source=Marq.sqlite"));
+    options.UseSqlite(builder.Configuration.GetConnectionString("MarqDb")));
 
 builder.Services.AddControllers();
 
@@ -19,7 +19,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddAutoMapper(typeof(AutoMappingProfile));
-
 builder.Services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();

@@ -43,19 +43,19 @@ namespace Prova.MarQ.Presentation.Controllers
         {
             var company = _mapper.Map<Company>(companyDTO);
             await _companyService.AddAsync(company);
-            return CreatedAtAction(nameof(GetByIdAsync), new { id = company.Id }, companyDTO);
+            return CreatedAtAction(nameof(GetByIdAsync), new { document = company.Document }, companyDTO);
         }
 
-        // [HttpPut("{id}")]
-        // public async Task<ActionResult> UpdateAsync(Guid id, CompanyDTO companyDTO)
-        // {
-        //     if (id != companyDTO.Id)
-        //         return BadRequest();
+        [HttpPut("{Document}")]
+        public async Task<ActionResult> UpdateAsync(string document, CompanyDTO companyDTO)
+        {
+            if (document != companyDTO.Document)
+                return BadRequest();
 
-        //     var company = _mapper.Map<Company>(companyDTO);
-        //     await _companyService.UpdateAsync(company);
-        //     return NoContent();
-        // }
+            var company = _mapper.Map<Company>(companyDTO);
+            await _companyService.UpdateAsync(company);
+            return NoContent();
+        }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteAsync(Guid id)

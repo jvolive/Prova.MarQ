@@ -2707,11 +2707,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\prova-marq-backend-main\\Prova.MarQ\\3. Infrastructure\\Prova.MarQ.Infra\\Prova.MarQ.Infra.csproj",
+      "projectUniqueName": "c:\\Projects\\prova-marq-backend-main\\Prova.MarQ\\3. Infrastructure\\Prova.MarQ.Infra\\Prova.MarQ.Infra.csproj",
       "projectName": "Prova.MarQ.Infra",
-      "projectPath": "C:\\Projects\\prova-marq-backend-main\\Prova.MarQ\\3. Infrastructure\\Prova.MarQ.Infra\\Prova.MarQ.Infra.csproj",
+      "projectPath": "c:\\Projects\\prova-marq-backend-main\\Prova.MarQ\\3. Infrastructure\\Prova.MarQ.Infra\\Prova.MarQ.Infra.csproj",
       "packagesPath": "C:\\Users\\joaoo\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\prova-marq-backend-main\\Prova.MarQ\\3. Infrastructure\\Prova.MarQ.Infra\\obj\\",
+      "outputPath": "c:\\Projects\\prova-marq-backend-main\\Prova.MarQ\\3. Infrastructure\\Prova.MarQ.Infra\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\joaoo\\AppData\\Roaming\\NuGet\\NuGet.Config"

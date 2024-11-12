@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
 namespace Prova.MarQ.Infra.Helpers;
-
 public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<MarqDbContext>
 {
     public MarqDbContext CreateDbContext(string[] args)
